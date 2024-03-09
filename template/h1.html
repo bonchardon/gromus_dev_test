@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+
+<body>
+    <section class="up">
+        <h1>Test</h1>
+    </section>
+
+    <div class="container">
+        <section class="left">
+            <h3>Block for UI</h3>
+        </section>
+
+        <div class="right-container">
+            <section class="right">
+                <img src="pic_1.png">
+                <p>Hello! I am Test Bot!</p>
+                <p style="background: linear-gradient(to right, #00FF00, #008000); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Your personal AI Assistant</p>
+                <p>Choose your communication style</p>
+            </section>
+
+            <section class="right-bottom">
+<!--                <p>Type a reply...</p>-->
+                <input type="text" id="user-reply" placeholder="Type a reply...">
+                <button onclick="submitReply()">Submit</button>
+            </section>
+        </div>
+    </div>
+
+    <!-- JavaScript to fetch Copilot data and update the UI -->
+    <script>
+        // Function to fetch Copilot data
+        function getCopilotData(endpoint) {
+            fetch(`/get_copilot_data/${endpoint}`)
+                .then(response => response.json())
+                .then(data => {
+                    // Update the UI with Copilot data
+                    const copilotSection = document.getElementById('copilot-data');
+                    copilotSection.innerHTML = `
+                        <img src="/test_1/pic_2.jpg">
+                        <p>${data}</p>
+                    `;
+                })
+                .catch(error => console.error('Error fetching Copilot data:', error));
+        }
+
+        // Function to submit user reply
+        function submitReply() {
+            const userReply = document.getElementById('user-reply').value;
+            // Send user reply to the server (you need to implement this)
+            console.log('User reply:', userReply);
+        }
+
+        // Call getCopilotData function with the desired endpoint
+        getCopilotData('Music');
+    </script>
+
+</body>
+
+</html>
