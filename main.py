@@ -16,8 +16,7 @@ def interact_with_copilot(endpoint):
     }
 
     # Make GET request to Copilot
-    token = str(
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJEYXRhUG9pbnRTZWNyZXQiOiI0NWUxY2UyNy05Y2UzLTQ0ZjQtYTAzNC0wM2MzZGE1M2VlZTMiLCJuYmYiOjE3MDk4MTA3ODEsImV4cCI6MTcxMjQ4OTE4MSwiaWF0IjoxNzA5ODEwNzgxLCJpc3MiOiJTZXJ2ZXIiLCJhdWQiOiJDbGllbnQifQ.q61C-P46IoZYKD9xhj8g6M4GgPU_IsggJNd0jeBhjXc')
+    token = str(TOKEN)
     headers = {'Token': f'{token}'}
     response = requests.get(ENDPOINTS[endpoint], headers=headers)
 
